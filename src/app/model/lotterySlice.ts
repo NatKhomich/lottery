@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
-interface LotteryState {
+type LotteryState = {
   firstFieldNumbers: number[]
   result: string
   secondFieldNumber: number

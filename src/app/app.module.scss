@@ -21,10 +21,19 @@
     }
 
     & .buttons {
-      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-top: 23px;
+    }
+  }
+}
 
+@media screen and (width <= 340px) {
+  .card {
+    & .buttons {
       & button + button {
-        margin-top: 4px;
+        margin-top: 8px;
       }
     }
   }
