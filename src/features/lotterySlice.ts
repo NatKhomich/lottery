@@ -42,7 +42,7 @@ const lotterySlice = createSlice({
       if (firstFieldMatches >= 4 || (firstFieldMatches >= 3 && secondFieldMatches === 1)) {
         console.log('firstFieldMatches', firstFieldMatches)
         console.log('secondFieldMatches', secondFieldMatches)
-        state.result = 'Вы победили!'
+        state.result = 'Ого, вы выиграли! Поздравляем!'
       } else {
         state.result = 'К сожалению, вы проиграли.'
       }

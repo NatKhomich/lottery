@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-evenly;
+
+  min-height: 100vh;
+  padding: 10px;
+
+  .card {
+    max-width: 550px;
+
+    & .titles {
+      display: flex;
+      margin: 16px 0 8px;
+
+      & p + p {
+        margin-left: 8px;
+      }
+    }
+
+    & .buttons {
+      margin-top: 8px;
+
+      & button + button {
+        margin-top: 4px;
+      }
+    }
+  }
+}

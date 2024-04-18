@@ -1,0 +1,18 @@
+@mixin typography($fontSize, $fontWeight, $lineHeight) {
+  margin: 0;
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+  line-height: $lineHeight;
+}
+
+.title {
+  @include typography(var(--font-size-m), var(--font-weight-bold), var(--line-height));
+}
+
+.subtitle1 {
+  @include typography(var(--font-size-s), var(--font-weight-regular), var(--line-height));
+}
+
+.subtitle2 {
+  @include typography(var(--font-size-s), var(--font-weight), var(--line-height));
+}
