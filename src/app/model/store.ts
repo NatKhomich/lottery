@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import lotteryReducer from './model/lotterySlice'
+import lotteryReducer from './lotterySlice'
 
 export const store = configureStore({
   reducer: {

@@ -1,15 +1,17 @@
+import { useDispatch, useSelector } from 'react-redux'
+
+import { selectFirstFieldNumbers } from '@/app/model/lotterySelectors'
+import { setFirstFieldNumbers } from '@/app/model/lotterySlice'
 import { TicketButton } from '@/features/tickets/ticketButton/ticketButton'
 
-type Props = {
-  selectedFirstNumbers: number[]
-  setSelectedFirstNumbers: (selectedFirstNumbers: number[]) => void
-}
-export const FirstFieldOfTicket = ({ selectedFirstNumbers, setSelectedFirstNumbers }: Props) => {
+export const FirstFieldOfTicket = () => {
+  const firstFieldNumbers = useSelector(selectFirstFieldNumbers)
+  const dispatch = useDispatch()
   const handleFirstNumberClick = (number: number) => {
-    if (selectedFirstNumbers.includes(number)) {
-      setSelectedFirstNumbers(selectedFirstNumbers.filter(num => num !== number))
+    if (firstFieldNumbers.includes(number)) {
+      dispatch(setFirstFieldNumbers(firstFieldNumbers.filter(num => num !== number)))
     } else {
-      setSelectedFirstNumbers([...selectedFirstNumbers, number])
+      dispatch(setFirstFieldNumbers([...firstFieldNumbers, number]))
     }
   }
 
@@ -17,8 +19,8 @@ export const FirstFieldOfTicket = ({ selectedFirstNumbers, setSelectedFirstNumbe
     <>
       {Array.from({ length: 19 }, (_, i) => (
         <TicketButton
-          isDisabled={selectedFirstNumbers.length >= 8 && !selectedFirstNumbers.includes(i + 1)}
-          isSelected={selectedFirstNumbers.includes(i + 1)}
+          isDisabled={firstFieldNumbers.length >= 8 && !firstFieldNumbers.includes(i + 1)}
+          isSelected={firstFieldNumbers.includes(i + 1)}
           key={i + 1}
           numberButton={i + 1}
           onClick={() => handleFirstNumberClick(i + 1)}

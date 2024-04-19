@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import s from './ticketButton.module.scss'
 
 type Props = {
-  isDisabled: boolean
+  isDisabled?: boolean
   isSelected: boolean
   numberButton: number
   onClick: () => void

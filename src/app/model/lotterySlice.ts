@@ -29,8 +29,6 @@ const lotterySlice = createSlice({
       const generatedSecondNumber = Math.floor(Math.random() * 2) + 1
 
       console.log(generatedSecondNumber)
-
-      // Сравнение сгенерированных чисел с выбранными пользователем
       const firstFieldMatches = state.firstFieldNumbers.filter(num =>
         generatedFirstNumbers.includes(num)
       ).length
@@ -38,7 +36,6 @@ const lotterySlice = createSlice({
       console.log(firstFieldMatches)
       const secondFieldMatches = generatedSecondNumber === state.secondFieldNumber ? 1 : 0
 
-      // Проверка условий победы
       if (firstFieldMatches >= 4 || (firstFieldMatches >= 3 && secondFieldMatches === 1)) {
         console.log('firstFieldMatches', firstFieldMatches)
         console.log('secondFieldMatches', secondFieldMatches)
