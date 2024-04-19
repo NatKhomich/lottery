@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { selectSecondFieldNumbers } from '@/app/model/lotterySelectors'
 import { setSecondFieldNumber } from '@/app/model/lotterySlice'
-import { TicketButton } from '@/features/tickets/ticketButton/ticketButton'
+import { TicketButton } from '@/features/ticketCard/ticketButton'
 
 export const SecondFieldOfTicket = () => {
   const secondFieldNumber = useSelector(selectSecondFieldNumbers)

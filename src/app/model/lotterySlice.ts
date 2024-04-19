@@ -1,3 +1,5 @@
+import { generateRandomNumber } from '@/common/utils/generateRandomNumber'
+import { generateRandomNumbers } from '@/common/utils/generateRandomNumbers'
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 type LotteryState = {
@@ -16,29 +18,24 @@ const lotterySlice = createSlice({
   initialState,
   name: 'lottery',
   reducers: {
+    calculateRandom: state => {
+      const generatedFirstNumbers = generateRandomNumbers(8)
+      const generatedSecondNumber = generateRandomNumber(1, 2)
+
+      state.firstFieldNumbers = generatedFirstNumbers
+      state.secondFieldNumber = generatedSecondNumber
+    },
     calculateResult: state => {
-      const generatedFirstNumbersSet = new Set<number>()
+      const generatedFirstNumbers = generateRandomNumbers(8)
+      const generatedSecondNumber = generateRandomNumber(1, 2)
 
-      while (generatedFirstNumbersSet.size < 8) {
-        generatedFirstNumbersSet.add(Math.floor(Math.random() * 19) + 1)
-      }
-      const generatedFirstNumbers = Array.from(generatedFirstNumbersSet)
-
-      console.log(generatedFirstNumbers)
-
-      const generatedSecondNumber = Math.floor(Math.random() * 2) + 1
-
-      console.log(generatedSecondNumber)
       const firstFieldMatches = state.firstFieldNumbers.filter(num =>
         generatedFirstNumbers.includes(num)
       ).length
 
-      console.log(firstFieldMatches)
       const secondFieldMatches = generatedSecondNumber === state.secondFieldNumber ? 1 : 0
 
       if (firstFieldMatches >= 4 || (firstFieldMatches >= 3 && secondFieldMatches === 1)) {
-        console.log('firstFieldMatches', firstFieldMatches)
-        console.log('secondFieldMatches', secondFieldMatches)
         state.result = 'Ого, вы выиграли! Поздравляем!'
       } else {
         state.result = 'К сожалению, вы проиграли.'
@@ -51,16 +48,19 @@ const lotterySlice = createSlice({
     },
     setFirstFieldNumbers: (state, action: PayloadAction<number[]>) => {
       state.firstFieldNumbers = action.payload
-      console.log(state.firstFieldNumbers)
     },
     setSecondFieldNumber: (state, action: PayloadAction<number>) => {
       state.secondFieldNumber = action.payload
-      console.log(state.secondFieldNumber)
     },
   },
 })
 
-export const { calculateResult, resetLottery, setFirstFieldNumbers, setSecondFieldNumber } =
-  lotterySlice.actions
+export const {
+  calculateRandom,
+  calculateResult,
+  resetLottery,
+  setFirstFieldNumbers,
+  setSecondFieldNumber,
+} = lotterySlice.actions
 
 export default lotterySlice.reducer

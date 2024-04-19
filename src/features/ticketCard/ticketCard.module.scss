@@ -1,0 +1,40 @@
+.card {
+  max-width: 550px;
+
+  & .header {
+    display: flex;
+    justify-content: space-between;
+
+    & button {
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+    }
+  }
+
+  & .titles {
+    display: flex;
+    margin: 16px 0 8px;
+
+    & p + p {
+      margin-left: 8px;
+    }
+  }
+
+  & .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 23px;
+  }
+}
+
+@media screen and (width <= 340px) {
+  .card {
+    & .buttons {
+      & button + button {
+        margin-top: 8px;
+      }
+    }
+  }
+}
